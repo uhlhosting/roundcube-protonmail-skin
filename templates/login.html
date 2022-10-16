@@ -2,10 +2,34 @@
 
 <h1 class="voice"><roundcube:object name="productname" /> <roundcube:label name="login" /></h1>
 
+<script>
+// to avoid CSS flickering, show the login form when DOMs are all ready
+$(function(){ $('#layout-content').removeClass('transparent'); });
+</script>
+
 <div id="layout-content" class="selected no-navbar" role="main">
 	<roundcube:object name="logo" src="/images/logo.svg" id="logo" alt="Logo" />
+	<h4 id="product-title" style="margin-top:-1rem; margin-bottom:2rem">
+		<roundcube:object name="productname" condition="config:display_product_info &gt; 2" />
+		<roundcube:if condition="config:display_product_info == 2" />
+			<span class="badge badge-success" title="Powered by Roundcube" data-toggle="tooltip">
+				<a class="text-white text-decoration-none"
+					href="https://github.com/jfcherng/roundcubemail" target="_blank">
+					<roundcube:object name="version" />
+				</a>
+			</span>
+		<roundcube:endif />
+	</h4>
 	<roundcube:form id="login-form" name="login-form" method="post" class="propform">
 	<roundcube:object name="loginform" form="login-form" size="40" submit=true class="form-control" />
+		
+		<p id="login-extra-info">
+			<span class="btn btn-danger btn-lg w-100 font-weight-bold">
+				<span class="fas fa-fw fa-exclamation-triangle"></span>
+				This is a beta release.
+			</span>
+		</p>
+		
 		<div id="login-footer" role="contentinfo">
 			<roundcube:object name="productname" condition="config:display_product_info &gt; 0" />
 			<roundcube:object name="version" condition="config:display_product_info == 2" />
@@ -18,6 +42,7 @@
 </div>
 
 <noscript>
+        <style> #layout-content { display: none !important; } </style>
 	<p class="noscriptwarning"><roundcube:label name="noscriptwarning" /></p>
 </noscript>
 
