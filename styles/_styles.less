@@ -1,0 +1,149 @@
+/* Here you can put your custom styles that will be appended to the output css file */
+
+@import (reference) "mixins";
+@import (reference) "variables";
+
+@logo-login-dimension: 320px * .85;
+
+html {
+    &.layout-phone {
+        #layout-menu .popover-header {
+            background: transparent;
+            border-bottom: 1px #f1f3f4 solid;
+            color: @color-toolbar-button;
+        }
+
+        body:not(.task-login) #logo {
+            display: none;
+        }
+    }
+
+    &.touch:not(.layout-phone) {
+        #layout-menu .popover-header img {
+            padding: 0;
+        }
+    }
+
+    &:not(.layout-phone) {
+        #logo-phone {
+            display: none;
+        }
+    }
+}
+
+body.task-login {
+    background: url(../images/blossom_mono.png) no-repeat center #fff;
+
+    #layout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #layout-content {
+        background-color: transparent;
+        transition: opacity .5s linear;
+    }
+
+    #logo {
+        width: @logo-login-dimension;
+        max-height: @logo-login-dimension;
+        margin-bottom: 2rem;
+    }
+
+    #logo,
+    #login-form {
+        top: 0;
+    }
+
+    #login-footer {
+        font-size: 1.35rem;
+    }
+
+    #product-title {
+        font-family: @title-font-family;
+
+        > .badge {
+            // background-color: @NTHU-color;
+            font-size: 60%;
+            vertical-align: sub;
+            margin-left: 0.5em;
+        }
+    }
+
+    #rcmloginsubmit {
+        font-weight: bold;
+    }
+}
+
+#message-header .short-header img.contactphoto {
+    border-radius: 10%;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.opaque {
+    opacity: 1;
+}
+
+.fas {
+    @fas-icons:
+        envelope,
+        exclamation-triangle,
+        globe,
+        ;
+
+    &:before {
+        font-family: Icons;
+    }
+
+    each(@fas-icons, {
+      &.fa-@{value}:before {
+        @fa-var-name: "fa-var-@{value}";
+
+        .font-icon-solid(@@fa-var-name);
+      }
+    });
+}
+
+/********************/
+/* font adjustments */
+/********************/
+
+body, button, input, optgroup, select, textarea, .popover {
+    font-family: @base-font-family;
+}
+
+#rcmloginsubmit,
+#login-footer,
+#message-header .subject,
+.frame-content h2,
+.frame-content h3,
+.formcontent legend,
+.propform legend,
+.ui-dialog .ui-dialog-title {
+    font-family: @title-font-family;
+}
+
+#message-header .subject,
+.formcontent legend,
+.propform legend,
+.ui-dialog .ui-dialog-title {
+    color: @NTHU-color;
+}
+
+.formcontent legend,
+.propform legend {
+    font-size: 1.4em;
+}
+
+.tooltip {
+    font-family:
+        @base-font-family,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+}

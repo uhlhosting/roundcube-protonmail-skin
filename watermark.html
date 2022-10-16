@@ -8,6 +8,7 @@ html, body { height: 100%; overflow: hidden; }
 body {
   background: url(images/mail.svg) center no-repeat #fff;
   background-size: 20%;
+  background-blend-mode: luminosity;
 }
 html:not(.dark-mode) body:before {
   content: "";
@@ -19,6 +20,7 @@ html:not(.dark-mode) body:before {
 }
 html.dark-mode > body {
   background-color: #1c1b24;
+  background-blend-mode: soft-light;
 }
 </style>
 <script>
